@@ -29,3 +29,9 @@ class RegistrationForm(forms.Form):
         except ObjectDoesNotExist:
             return username
         raise forms.ValidationError('Username Is Already Taken.')
+
+
+class BookmarkSaveForm(forms.Form):
+    url = forms.URLField(label='Web Address', widget=forms.TextInput(attrs={'size': 64}))
+    title = forms.CharField(label='Bookmark Title', widget=forms.TextInput(attrs={'size': 64}))
+    tags = forms.CharField(label='Bookmark Tags', widget=forms.TextInput(attrs={'size': 64}))

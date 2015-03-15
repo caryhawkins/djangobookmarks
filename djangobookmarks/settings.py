@@ -96,3 +96,6 @@ TEMPLATE_DIRS = (
 )
 
 SITE_ID = 1
+
+import django.contrib.auth
+django.contrib.auth.LOGIN_URL = '/login/'
