@@ -5,7 +5,6 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import logout
 from djangobookmarks.bookmarks.forms import *
 from djangobookmarks.bookmarks.models import *
-from django.contrib.auth.decorators import login_required
 
 
 def main_page(request):
@@ -14,7 +13,7 @@ def main_page(request):
         RequestContext(request)
     )
 
-@login_required
+
 def user_page(request, username):
     try:
         user = User.objects.get(username=username)
@@ -51,7 +50,10 @@ def register_page(request):
     })
     return render_to_response('registration/register.html', variables)
 
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='/login')
 def bookmark_save_page(request):
     if request.method == 'POST':
         form = BookmarkSaveForm(request.POST)
