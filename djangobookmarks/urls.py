@@ -19,4 +19,5 @@ urlpatterns = patterns('',
                       (r'^register/success/$', TemplateView, {'template': 'registration/register_success.html'}),
                        #Account Management
                       (r'save/$', bookmark_save_page),
+                      (r'^tag/([^\s]+)/$', tag_page),
                        )
